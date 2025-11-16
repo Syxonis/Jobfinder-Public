@@ -1,0 +1,577 @@
+[gd_scene load_steps=5 format=3 uid="uid://b60qovla3he4r"]
+
+[ext_resource type="Theme" uid="uid://bi54ign8ggomc" path="res://Assets/Themes/Classic95/Classic95.tres" id="1_oadsx"]
+[ext_resource type="Script" uid="uid://cv1wg7mpgiie5" path="res://Scripts/Controls/agentur_api_control.gd" id="2_ia07t"]
+[ext_resource type="Script" uid="uid://cwvajo2cpbwow" path="res://Scripts/Ui/ui_main_control.gd" id="3_oadsx"]
+[ext_resource type="Script" uid="uid://de1yb1e3k23ro" path="res://Resources/Classes/MultiSelectMenuButton.gd" id="4_ia07t"]
+
+[node name="MainControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oadsx")
+
+[node name="AgenturApiControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ia07t")
+
+[node name="AgenturApiHTTPRequest" type="HTTPRequest" parent="AgenturApiControl"]
+
+[node name="UIMainControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_oadsx")
+
+[node name="PanelControl" type="Control" parent="UIMainControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UIMainControl/PanelControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="UIMainControl/PanelControl"]
+custom_minimum_size = Vector2(800, 930)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -930.0
+offset_right = 810.0
+grow_vertical = 0
+
+[node name="Panel3" type="Panel" parent="UIMainControl/PanelControl"]
+custom_minimum_size = Vector2(810, 930)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 810.0
+offset_top = -930.0
+offset_right = 1620.0
+grow_vertical = 0
+
+[node name="Panel4" type="Panel" parent="UIMainControl/PanelControl"]
+custom_minimum_size = Vector2(800, 70)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 810.0
+offset_bottom = 220.0
+
+[node name="Panel5" type="Panel" parent="UIMainControl/PanelControl"]
+custom_minimum_size = Vector2(810, 70)
+layout_mode = 0
+offset_left = 810.0
+offset_top = 150.0
+offset_right = 1620.0
+offset_bottom = 220.0
+
+[node name="Panel6" type="Panel" parent="UIMainControl/PanelControl"]
+custom_minimum_size = Vector2(800, 150)
+layout_mode = 1
+offset_left = 10.0
+offset_right = 810.0
+offset_bottom = 150.0
+
+[node name="Panel7" type="Panel" parent="UIMainControl/PanelControl"]
+custom_minimum_size = Vector2(810, 150)
+layout_mode = 1
+offset_left = 810.0
+offset_right = 1620.0
+offset_bottom = 150.0
+
+[node name="Panel8" type="Panel" parent="UIMainControl/PanelControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -282.0
+offset_right = -18.0
+offset_bottom = 70.0
+grow_horizontal = 0
+
+[node name="Panel9" type="Panel" parent="UIMainControl/PanelControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -282.0
+offset_top = 70.0
+offset_right = -18.0
+offset_bottom = 443.0
+grow_horizontal = 0
+
+[node name="Panel10" type="Panel" parent="UIMainControl/PanelControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -282.0
+offset_top = 480.0
+offset_right = -18.0
+offset_bottom = 853.0
+grow_horizontal = 0
+
+[node name="ScrollContainerJobs" type="ScrollContainer" parent="UIMainControl"]
+custom_minimum_size = Vector2(800, 860)
+layout_mode = 1
+offset_left = 10.0
+offset_top = 220.0
+offset_right = 810.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainerJobs" type="VBoxContainer" parent="UIMainControl/ScrollContainerJobs"]
+custom_minimum_size = Vector2(800, 860)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="ScrollContainerFavorites" type="ScrollContainer" parent="UIMainControl"]
+custom_minimum_size = Vector2(810, 860)
+layout_mode = 1
+offset_left = 810.0
+offset_top = 220.0
+offset_right = 1610.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainerFavorites" type="VBoxContainer" parent="UIMainControl/ScrollContainerFavorites"]
+custom_minimum_size = Vector2(810, 860)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="AusschreibungenPreLabel" type="Label" parent="UIMainControl"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 810.0
+offset_bottom = 220.0
+text = "Ausschreibungen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightControl" type="Control" parent="UIMainControl"]
+custom_minimum_size = Vector2(260, 340)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -282.0
+offset_top = 70.0
+offset_right = -18.0
+offset_bottom = 440.0
+grow_horizontal = 0
+
+[node name="JobTitelLineEdit" type="LineEdit" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(240, 35)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 249.0
+offset_bottom = 46.0
+placeholder_text = "Jobtitel: "
+
+[node name="BerufsfeldLineEdit" type="LineEdit" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(240, 35)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 55.0
+offset_right = 250.0
+offset_bottom = 90.0
+placeholder_text = "Berufsfeld: "
+
+[node name="OrtLineEdit" type="LineEdit" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(240, 35)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 145.0
+offset_right = 250.0
+offset_bottom = 180.0
+placeholder_text = "Ort:  "
+
+[node name="AngebotsartOptionsButton" type="OptionButton" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(240, 35)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 100.0
+offset_right = 250.0
+offset_bottom = 135.0
+alignment = 1
+selected = 0
+fit_to_longest_item = false
+item_count = 6
+popup/item_0/text = "Angebotsart"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_0/separator = true
+popup/item_1/text = "Arbeit"
+popup/item_1/id = 1
+popup/item_2/text = "Selbstständigkeit"
+popup/item_2/id = 2
+popup/item_3/text = "Ausbildung/Duales Studium"
+popup/item_3/id = 3
+popup/item_4/text = "Praktikum"
+popup/item_4/id = 4
+popup/item_5/text = "Egal"
+popup/item_5/id = 5
+
+[node name="UmkreisSpinButton" type="SpinBox" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 0
+offset_left = 60.0
+offset_top = 290.0
+offset_right = 210.0
+offset_bottom = 330.0
+value = 25.0
+prefix = "Umkreis"
+suffix = "km"
+
+[node name="MaxErgebnisseSpinBox" type="SpinBox" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 336.0
+offset_right = 110.0
+offset_bottom = 367.0
+min_value = 1.0
+max_value = 250.0
+value = 100.0
+rounded = true
+prefix = "Suchergebnisse:"
+
+[node name="CheckButtonControl" type="Control" parent="UIMainControl/RightControl"]
+custom_minimum_size = Vector2(260, 0)
+anchors_preset = 0
+offset_top = 190.0
+offset_right = 260.0
+offset_bottom = 280.0
+
+[node name="VollzeitCheckButton" type="CheckButton" parent="UIMainControl/RightControl/CheckButtonControl"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 31.0
+disabled = true
+text = "Vollzeit"
+alignment = 1
+icon_alignment = 1
+
+[node name="TeilzeitCheckButton" type="CheckButton" parent="UIMainControl/RightControl/CheckButtonControl"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 130.0
+offset_right = 260.0
+offset_bottom = 31.0
+disabled = true
+text = "Teilzeit"
+alignment = 1
+icon_alignment = 1
+
+[node name="SchichtNachtWECheckButton3" type="CheckButton" parent="UIMainControl/RightControl/CheckButtonControl"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 0
+offset_top = 62.0
+offset_right = 260.0
+offset_bottom = 93.0
+disabled = true
+text = "Schicht/Nacht/WE"
+alignment = 1
+icon_alignment = 1
+
+[node name="MinijobCheckButton" type="CheckButton" parent="UIMainControl/RightControl/CheckButtonControl"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_top = 31.0
+offset_right = 130.0
+offset_bottom = 62.0
+disabled = true
+text = "Minijob"
+alignment = 1
+icon_alignment = 1
+
+[node name="WorkFromHomeCheckButton" type="CheckButton" parent="UIMainControl/RightControl/CheckButtonControl"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 0
+offset_left = 130.0
+offset_top = 31.0
+offset_right = 260.0
+offset_bottom = 62.0
+disabled = true
+text = "Home"
+alignment = 1
+icon_alignment = 1
+
+[node name="SaveSearchParamsButton" type="Button" parent="UIMainControl/RightControl"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Suchoptionen Speichern"
+
+[node name="ResetOptionenButton" type="Button" parent="UIMainControl/RightControl"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = 6.0
+offset_bottom = 37.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Reset"
+
+[node name="FolderDataControl" type="Control" parent="UIMainControl"]
+custom_minimum_size = Vector2(260, 340)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -282.0
+offset_top = 500.0
+offset_right = -22.0
+offset_bottom = 840.0
+grow_horizontal = 0
+
+[node name="ExportToCSVButton" type="Button" parent="UIMainControl/FolderDataControl"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Export to CSV"
+
+[node name="OpenJobSavingutton" type="Button" parent="UIMainControl/FolderDataControl"]
+custom_minimum_size = Vector2(210, 35)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -90.0
+offset_right = 105.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Open User Data Folder"
+
+[node name="ClearFoldersWithoutJobsButton" type="Button" parent="UIMainControl/FolderDataControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -35.0
+offset_right = 225.0
+grow_vertical = 0
+disabled = true
+text = "Clear Folders Without Jobs"
+
+[node name="UnlockFolderClearCheckButton" type="CheckButton" parent="UIMainControl/FolderDataControl"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -25.5
+offset_bottom = -9.5
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="JobsNeuSuchenButton" type="Button" parent="UIMainControl"]
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -270.0
+offset_top = 10.0
+offset_right = -30.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "Jobs Neu Suchen"
+
+[node name="AusschreibungenSortControl" type="Control" parent="UIMainControl"]
+custom_minimum_size = Vector2(500, 105)
+anchors_preset = 0
+offset_left = 10.0
+offset_right = 810.0
+offset_bottom = 150.0
+
+[node name="JobtitelSortMenuButton" type="MenuButton" parent="UIMainControl/AusschreibungenSortControl"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 260.0
+offset_bottom = 50.0
+text = "Jobtitel"
+flat = false
+switch_on_hover = true
+script = ExtResource("4_ia07t")
+default_text = "Jobtitel"
+
+[node name="BerufSortMenuButton" type="MenuButton" parent="UIMainControl/AusschreibungenSortControl"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 260.0
+offset_bottom = 100.0
+text = "Beruf"
+flat = false
+switch_on_hover = true
+script = ExtResource("4_ia07t")
+default_text = "Beruf"
+
+[node name="ArbeitgeberSortMenuButton" type="MenuButton" parent="UIMainControl/AusschreibungenSortControl"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 400.0
+offset_top = 10.0
+offset_right = 650.0
+offset_bottom = 50.0
+text = "Arbeitgeber"
+flat = false
+script = ExtResource("4_ia07t")
+default_text = "Arbeitgeber"
+
+[node name="OrtSortMenuButton" type="MenuButton" parent="UIMainControl/AusschreibungenSortControl"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 400.0
+offset_top = 60.0
+offset_right = 650.0
+offset_bottom = 100.0
+text = "Ort"
+flat = false
+script = ExtResource("4_ia07t")
+default_text = "Ort"
+
+[node name="FavoritenSortControl" type="Control" parent="UIMainControl"]
+custom_minimum_size = Vector2(800, 150)
+anchors_preset = 0
+offset_left = 820.0
+offset_right = 1420.0
+offset_bottom = 150.0
+
+[node name="JobtitelFavSortMenuButton" type="MenuButton" parent="UIMainControl/FavoritenSortControl"]
+visible = false
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 260.0
+offset_bottom = 50.0
+text = "Jobtitel"
+flat = false
+switch_on_hover = true
+script = ExtResource("4_ia07t")
+default_text = "Jobtitel"
+
+[node name="ArbeitgeberFavSortMenuButton" type="MenuButton" parent="UIMainControl/FavoritenSortControl"]
+visible = false
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 400.0
+offset_top = 10.0
+offset_right = 650.0
+offset_bottom = 50.0
+text = "Arbeitgeber"
+flat = false
+script = ExtResource("4_ia07t")
+default_text = "Arbeitgeber"
+
+[node name="OrtFavSortMenuButton" type="MenuButton" parent="UIMainControl/FavoritenSortControl"]
+visible = false
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 260.0
+offset_bottom = 100.0
+text = "Ort"
+flat = false
+script = ExtResource("4_ia07t")
+default_text = "Ort"
+
+[node name="FavoritenPreLabel" type="Label" parent="UIMainControl"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 0
+offset_left = 820.0
+offset_top = 150.0
+offset_right = 1620.0
+offset_bottom = 220.0
+text = "Favoriten"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TestButton" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "TESTTTT"
+
+[node name="TestHTTPRequest" type="HTTPRequest" parent="TestButton"]
+
+[connection signal="request_completed" from="AgenturApiControl/AgenturApiHTTPRequest" to="AgenturApiControl" method="_on_agentur_api_http_request_request_completed"]
+[connection signal="text_changed" from="UIMainControl/RightControl/JobTitelLineEdit" to="UIMainControl" method="_on_job_titel_line_edit_text_changed"]
+[connection signal="text_changed" from="UIMainControl/RightControl/BerufsfeldLineEdit" to="UIMainControl" method="_on_berufsfeld_line_edit_text_changed"]
+[connection signal="text_changed" from="UIMainControl/RightControl/OrtLineEdit" to="UIMainControl" method="_on_ort_line_edit_text_changed"]
+[connection signal="item_selected" from="UIMainControl/RightControl/AngebotsartOptionsButton" to="UIMainControl" method="_on_angebotsart_options_button_item_selected"]
+[connection signal="value_changed" from="UIMainControl/RightControl/UmkreisSpinButton" to="UIMainControl" method="_on_umkreis_spin_button_value_changed"]
+[connection signal="value_changed" from="UIMainControl/RightControl/MaxErgebnisseSpinBox" to="UIMainControl" method="_on_max_ergebnisse_spin_box_value_changed"]
+[connection signal="pressed" from="UIMainControl/RightControl/SaveSearchParamsButton" to="UIMainControl" method="_on_save_search_params_button_pressed"]
+[connection signal="pressed" from="UIMainControl/RightControl/ResetOptionenButton" to="UIMainControl" method="_on_reset_optionen_button_pressed"]
+[connection signal="pressed" from="UIMainControl/FolderDataControl/ExportToCSVButton" to="UIMainControl" method="_on_export_to_csv_button_pressed"]
+[connection signal="pressed" from="UIMainControl/FolderDataControl/OpenJobSavingutton" to="UIMainControl" method="_on_open_job_savingutton_pressed"]
+[connection signal="pressed" from="UIMainControl/FolderDataControl/ClearFoldersWithoutJobsButton" to="UIMainControl" method="_on_clear_folders_without_jobs_button_pressed"]
+[connection signal="toggled" from="UIMainControl/FolderDataControl/UnlockFolderClearCheckButton" to="UIMainControl" method="_on_unlock_folder_clear_check_button_toggled"]
+[connection signal="pressed" from="UIMainControl/JobsNeuSuchenButton" to="UIMainControl" method="_on_jobs_neu_suchen_button_pressed"]
+[connection signal="pressed" from="TestButton" to="UIMainControl" method="_on_button_pressed"]
+[connection signal="request_completed" from="TestButton/TestHTTPRequest" to="UIMainControl" method="_on_http_request_request_completed"]

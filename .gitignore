@@ -1,0 +1,41 @@
+# Godot editor and user-specific files
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+
+# Godot temporary and generated files
+*.import
+*.tmp
+*.log
+
+# Godot project metadata (optional: include only if not needed)
+*.mono/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Visual Studio / IDE files
+.vscode/
+.idea/
+
+# Python virtual env (if using scripts)
+venv/
+__pycache__/
+
+# Build / exported projects
+*.exe
+*.apk
+*.x86_64
+*.pck
+*.zip
+
+# Ignore Godot temporary cache (folding / edit state)
+*.tscn-editstate-*
+*.gd-folding-*
+*.tres-*  
+*.cfg
+
+# Optional: Ignore auto-generated thumbnails (Godot 4.4)
+*.import

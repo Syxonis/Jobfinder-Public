@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd5s7f5rfvrll"]
+
+[ext_resource type="Script" uid="uid://b66nxep12xnml" path="res://Scripts/Ui/job_display.gd" id="1_7h8ua"]
+
+[node name="job_display" type="Control"]
+custom_minimum_size = Vector2(800, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 780.0
+offset_bottom = 150.0
+script = ExtResource("1_7h8ua")
+
+[node name="MarginContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(20, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -5.0
+offset_bottom = 150.0
+grow_horizontal = 0
+
+[node name="ActualControl" type="Control" parent="."]
+custom_minimum_size = Vector2(780, 150)
+anchors_preset = 0
+offset_right = 760.0
+offset_bottom = 150.0
+
+[node name="Panel" type="Panel" parent="ActualControl"]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="beruf_label" type="Label" parent="ActualControl"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 655.0
+offset_bottom = 28.0
+
+[node name="titel_label" type="Label" parent="ActualControl"]
+clip_contents = true
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 28.0
+offset_right = 655.0
+offset_bottom = 51.0
+clip_text = true
+text_overrun_behavior = 4
+
+[node name="ort_label" type="Label" parent="ActualControl"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 65.0
+offset_right = 655.0
+offset_bottom = 88.0
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="arbeitgeber_label" type="Label" parent="ActualControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 655.0
+offset_bottom = 70.0
+grow_vertical = 2
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="datum_label" type="Label" parent="ActualControl"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -52.0
+offset_right = 330.0
+offset_bottom = -29.0
+grow_vertical = 0
+
+[node name="entfernung label" type="Label" parent="ActualControl"]
+custom_minimum_size = Vector2(325, 23)
+layout_mode = 0
+offset_left = 330.0
+offset_top = 98.0
+offset_right = 655.0
+offset_bottom = 121.0
+
+[node name="favorite_button" type="Button" parent="ActualControl"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -125.0
+offset_top = 10.0
+offset_right = -25.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "Favorite
+"
+
+[node name="open_link_button" type="Button" parent="ActualControl"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -60.0
+offset_right = -25.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Open Link"
+
+[connection signal="pressed" from="ActualControl/favorite_button" to="." method="_on_favorite_button_pressed"]
+[connection signal="pressed" from="ActualControl/open_link_button" to="." method="_on_open_link_button_pressed"]
