@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Ausbildungs-Organizer-Public"
+config/name="Jobfinder-Public"
+config/version="1.0"
 run/main_scene="res://Scenes/MainControl.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
