@@ -92,13 +92,13 @@ offset_bottom = 140.0
 grow_horizontal = 0
 text = "Pfad Öffnen"
 
-[node name="LeftLabelControl" type="Control" parent="ActualContainer"]
+[node name="TopLabelControl" type="Control" parent="ActualContainer"]
 custom_minimum_size = Vector2(790, 150)
 anchors_preset = 0
 offset_right = 510.0
 offset_bottom = 150.0
 
-[node name="Panel" type="Panel" parent="ActualContainer/LeftLabelControl"]
+[node name="Panel" type="Panel" parent="ActualContainer/TopLabelControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,7 +106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BerufLabel" type="RichTextLabel" parent="ActualContainer/LeftLabelControl"]
+[node name="BerufLabel" type="RichTextLabel" parent="ActualContainer/TopLabelControl"]
 custom_minimum_size = Vector2(780, 23)
 layout_mode = 0
 offset_left = 5.0
@@ -115,7 +115,7 @@ offset_right = 785.0
 offset_bottom = 28.0
 bbcode_enabled = true
 
-[node name="TitelLabel" type="RichTextLabel" parent="ActualContainer/LeftLabelControl"]
+[node name="TitelLabel" type="RichTextLabel" parent="ActualContainer/TopLabelControl"]
 custom_minimum_size = Vector2(780, 23)
 layout_mode = 0
 offset_left = 5.0
@@ -124,7 +124,7 @@ offset_right = 505.0
 offset_bottom = 51.0
 bbcode_enabled = true
 
-[node name="ArbeitgeberLabel" type="RichTextLabel" parent="ActualContainer/LeftLabelControl"]
+[node name="ArbeitgeberLabel" type="RichTextLabel" parent="ActualContainer/TopLabelControl"]
 custom_minimum_size = Vector2(780, 23)
 layout_mode = 0
 offset_left = 5.0
@@ -236,16 +236,6 @@ text = "Status:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NoteStaticlabel" type="Label" parent="ActualContainer/InteractiveControl/StatusControl"]
-layout_mode = 0
-offset_left = 375.0
-offset_top = 5.0
-offset_right = 675.0
-offset_bottom = 28.0
-text = "Notizen:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="StatusOptionButton" type="OptionButton" parent="ActualContainer/InteractiveControl/StatusControl"]
 layout_mode = 0
 offset_left = 69.0
@@ -268,7 +258,77 @@ popup/item_5/id = 5
 popup/item_6/text = "Anderes"
 popup/item_6/id = 6
 
-[node name="NoteTextEdit" type="TextEdit" parent="ActualContainer/InteractiveControl/StatusControl"]
+[node name="BewerbungAuswählenButton" type="Button" parent="ActualContainer/InteractiveControl"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 196.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "Bewerbung Auswählen:"
+
+[node name="FileDialog" type="FileDialog" parent="ActualContainer/InteractiveControl/BewerbungAuswählenButton"]
+oversampling_override = 1.0
+title = "Open a File"
+size = Vector2i(1280, 720)
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="AnschreibenAuswählenButton" type="Button" parent="ActualContainer/InteractiveControl"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 210.0
+offset_bottom = -48.0
+grow_vertical = 0
+text = "Anschreiben Auswählen:"
+
+[node name="AnschreibenUnassignButton" type="Button" parent="ActualContainer/InteractiveControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 230.0
+offset_top = -80.0
+offset_right = 264.0
+offset_bottom = -48.0
+grow_vertical = 0
+text = "Del"
+
+[node name="BewerbungUnassignButton" type="Button" parent="ActualContainer/InteractiveControl"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 230.0
+offset_top = -41.0
+offset_right = 262.0
+offset_bottom = -9.0
+grow_vertical = 0
+text = "Del"
+
+[node name="NoteStaticlabel" type="Label" parent="ActualContainer/InteractiveControl"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 5.0
+offset_right = 675.0
+offset_bottom = 28.0
+text = "Notizen:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoteTextEdit" type="TextEdit" parent="ActualContainer/InteractiveControl"]
 custom_minimum_size = Vector2(300, 115)
 layout_mode = 0
 offset_left = 375.0
@@ -280,4 +340,9 @@ offset_bottom = 145.0
 [connection signal="pressed" from="ActualContainer/ButtonControl/open_link_button" to="." method="_on_open_link_button_pressed"]
 [connection signal="pressed" from="ActualContainer/ButtonControl/OpenPathButton" to="." method="_on_open_path_button_pressed"]
 [connection signal="item_selected" from="ActualContainer/InteractiveControl/StatusControl/StatusOptionButton" to="." method="_on_status_option_button_item_selected"]
-[connection signal="text_changed" from="ActualContainer/InteractiveControl/StatusControl/NoteTextEdit" to="." method="_on_note_text_edit_text_changed"]
+[connection signal="pressed" from="ActualContainer/InteractiveControl/BewerbungAuswählenButton" to="." method="_on_bewerbung_auswählen_button_pressed"]
+[connection signal="file_selected" from="ActualContainer/InteractiveControl/BewerbungAuswählenButton/FileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="ActualContainer/InteractiveControl/AnschreibenAuswählenButton" to="." method="_on_anschreiben_auswählen_button_pressed"]
+[connection signal="pressed" from="ActualContainer/InteractiveControl/AnschreibenUnassignButton" to="." method="_on_anschreiben_unassign_button_pressed"]
+[connection signal="pressed" from="ActualContainer/InteractiveControl/BewerbungUnassignButton" to="." method="_on_bewerbung_unassign_button_pressed"]
+[connection signal="text_changed" from="ActualContainer/InteractiveControl/NoteTextEdit" to="." method="_on_note_text_edit_text_changed"]

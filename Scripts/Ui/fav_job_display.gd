@@ -9,9 +9,9 @@ var refnr: String = ""
 
 # Nodes
 # Labels
-@onready var beruf_label: RichTextLabel = $ActualContainer/LeftLabelControl/BerufLabel
-@onready var titel_label: RichTextLabel = $ActualContainer/LeftLabelControl/TitelLabel
-@onready var arbeitgeber_label: RichTextLabel = $ActualContainer/LeftLabelControl/ArbeitgeberLabel
+@onready var beruf_label: RichTextLabel = $ActualContainer/TopLabelControl/BerufLabel
+@onready var titel_label: RichTextLabel = $ActualContainer/TopLabelControl/TitelLabel
+@onready var arbeitgeber_label: RichTextLabel = $ActualContainer/TopLabelControl/ArbeitgeberLabel
 @onready var region_label: RichTextLabel = $ActualContainer/OrtControl/RegionLabel
 @onready var ort_label: RichTextLabel = $ActualContainer/OrtControl/OrtLabel
 @onready var ortsteil_label: RichTextLabel = $ActualContainer/OrtControl/OrtsteilLabel
@@ -19,7 +19,11 @@ var refnr: String = ""
 @onready var entfernung_label: RichTextLabel = $ActualContainer/OrtControl/EntfernungLabel
 # Buttons
 @onready var status_option_button: OptionButton = $ActualContainer/InteractiveControl/StatusControl/StatusOptionButton
-@onready var note_text_edit: TextEdit = $ActualContainer/InteractiveControl/StatusControl/NoteTextEdit
+@onready var note_text_edit: TextEdit = $ActualContainer/InteractiveControl/NoteTextEdit
+@onready var bewerbung_auswählen_button: Button = $ActualContainer/InteractiveControl/BewerbungAuswählenButton
+@onready var anschreiben_auswählen_button: Button = $ActualContainer/InteractiveControl/AnschreibenAuswählenButton
+# Other
+@onready var file_dialog: FileDialog = $ActualContainer/InteractiveControl/BewerbungAuswählenButton/FileDialog
 
 
 var rtl_selectables: Array = []
@@ -100,3 +104,61 @@ func select_option_by_text(option_button: OptionButton, text_to_select: String) 
 
 func _on_open_path_button_pressed() -> void:
 	OS.shell_open(OS.get_user_data_dir() + "/saved_joblistings/" + Global.get_job_folderpath(assigned_job, true))
+
+
+# Function Relevant Vars
+var is_bewerbung_assigned: bool = false
+var is_anschreiben_assigned: bool = false
+var file_dialog_mode: String
+
+# Bewerbung
+var assigned_bewerbung_path: String
+var assigned_bewerbung_filename: String
+# Anschreiben
+var assigned_anschreiben_path: String
+var assigned_anschreiben_filename: String
+
+
+func _on_bewerbung_auswählen_button_pressed() -> void:
+	if !is_bewerbung_assigned:
+		file_dialog_mode = "bewerbung"
+		file_dialog.popup_centered()
+	else:
+		OS.shell_open(assigned_bewerbung_path)
+
+
+
+func _on_anschreiben_auswählen_button_pressed() -> void:
+	if !is_anschreiben_assigned:
+		file_dialog_mode = "anschreiben"
+		file_dialog.popup_centered()
+	else:
+		OS.shell_open(assigned_anschreiben_path)
+
+
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	match file_dialog_mode:
+		"bewerbung":
+			assigned_bewerbung_path = path
+			assigned_bewerbung_filename = path.get_file()
+			bewerbung_auswählen_button.text = assigned_bewerbung_filename + " Öffnen"
+			is_bewerbung_assigned = true
+		"anschreiben":
+			assigned_anschreiben_path = path
+			assigned_anschreiben_filename = path.get_file()
+			anschreiben_auswählen_button.text = assigned_anschreiben_filename + " Öffnen"
+			is_anschreiben_assigned = true
+
+
+func _on_bewerbung_unassign_button_pressed() -> void:
+	assigned_bewerbung_path = ""
+	assigned_bewerbung_filename = ""
+	bewerbung_auswählen_button.text = "Bewerbung Auswählen:"
+	is_bewerbung_assigned = false
+
+func _on_anschreiben_unassign_button_pressed() -> void:
+	assigned_anschreiben_path = ""
+	assigned_anschreiben_filename = ""
+	anschreiben_auswählen_button.text = "Anschreiben Auswählen:"
+	is_anschreiben_assigned = false

@@ -36,9 +36,11 @@ extends Control
 const JOB_DISPLAY = preload("res://Scenes/Ui/JobDisplay.tscn")
 const FAV_JOB_DISPLAY = preload("res://Scenes/Ui/FavJobDisplay.tscn")
 
+var search_buttons: Array
 
 
 func _ready() -> void:
+	search_buttons = [job_titel_line_edit, berufsfeld_line_edit, ort_line_edit, umkreis_spin_button, max_ergebnisse_spin_box, angebotsart_options_button, jobs_neu_suchen_button]
 	connect_signals()
 	while !Global.conf_data_loaded:
 		pass
@@ -190,14 +192,17 @@ func _on_angebotsart_options_button_item_selected(index: int) -> void:
 		3: agentur_api_control.api_search_params["angebotsart"] = "4"
 		4: agentur_api_control.api_search_params["angebotsart"] = "34"
 		5: agentur_api_control.api_search_params.erase("angebotsart")
+	agentur_api_control.get_agentur_job_data()
 
 # Umkreis Param Spinbox Input
 func _on_umkreis_spin_button_value_changed(value: float) -> void:
 	agentur_api_control.api_search_params["umkreis"] = str(int(value))
+	agentur_api_control.get_agentur_job_data()
 
 # Ergebnisse Param Spinbox Input
 func _on_max_ergebnisse_spin_box_value_changed(value: float) -> void:
 	agentur_api_control.api_search_params["size"] = str(int(value))
+	agentur_api_control.get_agentur_job_data()
 
 
 
@@ -296,3 +301,14 @@ func _on_reset_optionen_button_pressed() -> void:
 	ort_line_edit.clear()
 	job_titel_line_edit.clear()
 	berufsfeld_line_edit.clear()
+
+
+## Search after Entering Param
+func _on_job_titel_line_edit_text_submitted(_new_text: String) -> void:
+	agentur_api_control.get_agentur_job_data()
+
+func _on_berufsfeld_line_edit_text_submitted(_new_text: String) -> void:
+	agentur_api_control.get_agentur_job_data()
+
+func _on_ort_line_edit_text_submitted(_new_text: String) -> void:
+	agentur_api_control.get_agentur_job_data()

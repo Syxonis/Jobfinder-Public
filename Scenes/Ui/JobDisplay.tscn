@@ -120,7 +120,7 @@ offset_right = -25.0
 offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Open Link"
+text = "Link Öffnen"
 
 [connection signal="pressed" from="ActualControl/favorite_button" to="." method="_on_favorite_button_pressed"]
 [connection signal="pressed" from="ActualControl/open_link_button" to="." method="_on_open_link_button_pressed"]

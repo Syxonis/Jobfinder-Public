@@ -32,9 +32,22 @@ const AGENTUR_API_KEY: String = "jobboerse-jobsuche"
 # Buttons
 @onready var jobs_neu_suchen_button: Button = $"../UIMainControl/JobsNeuSuchenButton"
 
+@onready var ui_main_control: Control = $"../UIMainControl"
+
 
 
 func get_agentur_job_data(extra_params: Dictionary = api_search_params) -> void:
+	if agentur_api_http_request.get_http_client_status() != HTTPClient.STATUS_DISCONNECTED:
+		if Global.DEBUGMODE:
+			print("Request already in progress. Skipping new request.")
+		return
+	
+	# Disable Search Buttons
+	for button in ui_main_control.search_buttons:
+		if button is LineEdit or button is SpinBox:
+			button.editable = false
+		else:
+			button.disabled = true
 	# Construct the URL, Header and Request
 	var base_url = AGENTUR_API_BASEURL + "jobs"
 	var header = ["X-API-Key: " + AGENTUR_API_KEY]
@@ -55,6 +68,8 @@ func get_agentur_job_data(extra_params: Dictionary = api_search_params) -> void:
 
 
 func _on_agentur_api_http_request_request_completed(_result: int, _response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
+	if Global.DEBUGMODE:
+		print("Request Completed")
 	# Encode the Data
 	Global.joblisting_refnr_map = {}
 	var temp = JSON.parse_string(body.get_string_from_utf8())
@@ -95,6 +110,12 @@ func _on_agentur_api_http_request_request_completed(_result: int, _response_code
 	jobs_neu_suchen_button.text = "Jobs Neu Suchen"
 	jobs_neu_suchen_button.disabled = false
 	Global.favJobListUpdate.emit()
+	# Reenable Search Buttons
+	for button in ui_main_control.search_buttons:
+		if button is LineEdit or button is SpinBox:
+			button.editable = true
+		else:
+			button.disabled = false
 
 
 func get_or_default(dict: Dictionary, key: String, default):

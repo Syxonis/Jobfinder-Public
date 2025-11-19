@@ -371,7 +371,7 @@ offset_left = -60.0
 offset_right = 60.0
 offset_bottom = 50.0
 grow_horizontal = 2
-text = "Export to CSV"
+text = "Als CSV Exportieren"
 
 [node name="OpenJobSavingutton" type="Button" parent="UIMainControl/FolderDataControl"]
 custom_minimum_size = Vector2(210, 35)
@@ -387,7 +387,7 @@ offset_right = 105.0
 offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Open User Data Folder"
+text = "User Data Ordner Öffnen"
 
 [node name="ClearFoldersWithoutJobsButton" type="Button" parent="UIMainControl/FolderDataControl"]
 layout_mode = 1
@@ -399,7 +399,7 @@ offset_top = -35.0
 offset_right = 225.0
 grow_vertical = 0
 disabled = true
-text = "Clear Folders Without Jobs"
+text = "Ordner ohne Jobs löschen"
 
 [node name="UnlockFolderClearCheckButton" type="CheckButton" parent="UIMainControl/FolderDataControl"]
 layout_mode = 1
@@ -425,7 +425,7 @@ offset_top = 10.0
 offset_right = -30.0
 offset_bottom = 60.0
 grow_horizontal = 0
-text = "Jobs Neu Suchen"
+text = "Suchen"
 
 [node name="AusschreibungenSortControl" type="Control" parent="UIMainControl"]
 custom_minimum_size = Vector2(500, 105)
@@ -561,8 +561,11 @@ text = "TESTTTT"
 
 [connection signal="request_completed" from="AgenturApiControl/AgenturApiHTTPRequest" to="AgenturApiControl" method="_on_agentur_api_http_request_request_completed"]
 [connection signal="text_changed" from="UIMainControl/RightControl/JobTitelLineEdit" to="UIMainControl" method="_on_job_titel_line_edit_text_changed"]
+[connection signal="text_submitted" from="UIMainControl/RightControl/JobTitelLineEdit" to="UIMainControl" method="_on_job_titel_line_edit_text_submitted"]
 [connection signal="text_changed" from="UIMainControl/RightControl/BerufsfeldLineEdit" to="UIMainControl" method="_on_berufsfeld_line_edit_text_changed"]
+[connection signal="text_submitted" from="UIMainControl/RightControl/BerufsfeldLineEdit" to="UIMainControl" method="_on_berufsfeld_line_edit_text_submitted"]
 [connection signal="text_changed" from="UIMainControl/RightControl/OrtLineEdit" to="UIMainControl" method="_on_ort_line_edit_text_changed"]
+[connection signal="text_submitted" from="UIMainControl/RightControl/OrtLineEdit" to="UIMainControl" method="_on_ort_line_edit_text_submitted"]
 [connection signal="item_selected" from="UIMainControl/RightControl/AngebotsartOptionsButton" to="UIMainControl" method="_on_angebotsart_options_button_item_selected"]
 [connection signal="value_changed" from="UIMainControl/RightControl/UmkreisSpinButton" to="UIMainControl" method="_on_umkreis_spin_button_value_changed"]
 [connection signal="value_changed" from="UIMainControl/RightControl/MaxErgebnisseSpinBox" to="UIMainControl" method="_on_max_ergebnisse_spin_box_value_changed"]
